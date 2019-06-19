@@ -93,7 +93,7 @@ var possibleWords = [
         [ "dec{0}", al_ar_a],
         [ "c{0}f", al_ar_a],
         [ "{0}l", al_ar_a ],
-        [ "c{0}t", a_ar_al],
+        [ "r{0}t", a_ar_al],
         [ "l{0}b", a_ar_al],
         [ "c{0}ll", a_ar_al ],
         [ "c{0}", ar_a_al ],
@@ -235,7 +235,7 @@ function shuffle(array) {
 }
 
 function generateRandomWord() {
-    $(".phoneme-word").remove();
+    $(".game-container").find(".phoneme-word").remove();
     $(".phoneme-ellipse").remove();
     
     
@@ -276,23 +276,29 @@ function generateRandomWord() {
             $(ui.helper).removeClass('ui-draggable-dragging');
             $(this).hide();
             $word.addClass("phoneme-word-correct");
-            $dragged.effect( "scale",
-                { percent: ($("body").mindim() / $dragged.mindim()) * 400 },
-                500,
-                function() {
-                    $dragged.remove();
-                    if(currentQuestion < 10) {
-                       currentQuestion++;
-                       $("#current").text(currentQuestion);
-                       generateRandomWord();
-                    } else {
-                        setTimeout(function() {
-                            $("#whole-game").hide();
-                            $("#whole-options").show();
-                        }, 2000);
+            $dragged.hide();
+            setTimeout(function() {
+                var $word_clone = $word.clone();
+                $word.effect( "scale",
+                    { percent: ($("body").mindim() / $dragged.mindim()) * 400 },
+                    500,
+                    function() {
+                        $dragged.remove();
+                        $(".completed-words").append($word_clone);
+                        if(currentQuestion < 10) {
+                           currentQuestion++;
+                           $("#current").text(currentQuestion);
+                           generateRandomWord();
+                        } else {
+                            setTimeout(function() {
+                                $("#whole-game").hide();
+                                $("#whole-options").show();
+                            }, 2000);
+                        }
                     }
-                }
-            );
+                );
+            }, 2000);
+            
             
             
         } else {
@@ -311,6 +317,7 @@ function generateRandomWord() {
 }
 
 function restartGame() {
+    $(".completed-words").children().not(".question-info").remove();
     $("#whole-options").hide();
     $("#whole-game").show();
     currentQuestion = 1;
