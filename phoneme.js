@@ -279,6 +279,7 @@ function generateRandomWord() {
             $dragged.hide();
             setTimeout(function() {
                 var $word_clone = $word.clone();
+                $word.css({ 'z-index': 2 });
                 $word.effect( "scale",
                     { percent: ($("body").mindim() / $dragged.mindim()) * 400 },
                     500,
