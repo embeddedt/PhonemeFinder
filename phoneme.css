@@ -1,0 +1,122 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13-Jun-2019, 6:10:39 PM
+    Author     : tt
+*/
+
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    line-height: 1.1;
+    background-color: white;
+    padding: 10px;
+}
+
+.phoneme-word, .phoneme {
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 40px;
+}
+
+.phoneme-ellipse {
+    border-radius: 10px;
+    background-color: blue;
+    padding: 2px;
+    margin: 10px;
+}
+
+.phoneme span {
+}
+
+.phoneme-word-correct {
+    background-color: darkgreen !important;
+    border-color: darkgreen !important;
+}
+
+.hide-phoneme-word-shapes .phoneme-word > .phoneme {
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.phoneme-word {
+    line-height: 1.0;
+    display: inline-block;
+    background-color: red;
+    position: relative;
+    border: 4px red solid;
+}
+
+.phoneme-word > .phoneme {
+    position: absolute;
+    top: 0;
+    background-color: white;
+    color: red;
+    z-index: 0;
+}
+
+.phoneme-word-correct > .phoneme {
+    color: darkgreen !important;
+}
+
+.question-info {
+    font-size: 22px;
+}
+
+.phoneme-word > .phoneme:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    content: '?';
+    width: 100%;
+    color: black;
+    background-color: white;
+}
+
+.options-container {
+    display: inline-flex;
+    display: -webkit-inline-flex;
+    max-width: 500px;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+}
+
+.options-container button {
+    margin: 5px;
+    font-size: 17px;
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+}
+
+.phoneme {
+    display: inline-block;
+    z-index: 1;
+}
+
+.phoneme-word > .phoneme, .phoneme span,.phoneme-word, .noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+body, html {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    min-height: 100%;
+}
+
+#whole-game {
+    overflow: hidden;
+}
